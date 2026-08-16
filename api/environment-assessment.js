@@ -8,7 +8,7 @@ import {
 } from '../lib/environment-assessment.js';
 
 const DEFAULT_BASE_URL = 'https://api.deepseek.com';
-const DEFAULT_MODEL = 'deepseek-v4-flash';
+const DEFAULT_MODEL = 'deepseek-v4-pro';
 
 function send(response, status, payload) {
   response.status(status).json(payload);
