@@ -1,0 +1,15 @@
+{
+  "name": "keli-safety-map-portfolio",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:backend": ".venv/bin/python -m pytest backend/tests -q",
+    "test:all": "npm test && npm run test:backend",
+    "dev": "vercel dev"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

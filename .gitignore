@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.db
+*.sqlite3
+node_modules/
+.vercel/

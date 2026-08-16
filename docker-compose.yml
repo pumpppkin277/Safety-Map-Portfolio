@@ -1,0 +1,32 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: keli
+      MYSQL_USER: keli
+      MYSQL_PASSWORD: keli-local
+      MYSQL_ROOT_PASSWORD: root-local
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    ports:
+      - "3306:3306"
+    volumes:
+      - keli_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot-local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: mysql+pymysql://keli:keli-local@mysql:3306/keli?charset=utf8mb4
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  keli_mysql:
